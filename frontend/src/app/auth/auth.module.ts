@@ -18,6 +18,9 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     AuthRoutingModule,
     MaterialModule
+  ],
+  providers: [
+    
   ]
 })
 export class AuthModule { }

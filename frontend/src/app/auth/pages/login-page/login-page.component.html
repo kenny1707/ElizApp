@@ -1,29 +1,16 @@
-<mat-card class="login-card">
-  <mat-card-title class="text-center p-3 border-round-sm bg-primary font-bold"
-    >Iniciar Sesión</mat-card-title
-  >
-  <mat-card-content>
-    <form class="login-form">
-      <div class="form-group">
-        <mat-form-field class="block bg-primary text-center border-round mb-3" appearance="fill">
-          <mat-label>Usuario</mat-label>
-          <input type="text" matInput placeholder="Nombre de Usuario" />
-        </mat-form-field>
-
-        <mat-form-field class="block bg-primary text-center border-round mb-3">
-          <mat-label>Contraseña</mat-label>
-          <input type="password" matInput placeholder="Contraseña" />
-        </mat-form-field>
-      </div>
-      <div class="button-container">
-        <button mat-flat-button color="bg-primary" class="full-width" type="submit">
-            <mat-icon>login</mat-icon>
-            Ingresar
-        </button>
-      </div>
-      <div class="text-center mt-3">
-        <a routerLink="/auth/register">¿No tienes cuenta?</a>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+<div class="container">
+  <div class="login-container">
+      <h2 class="text-center">Iniciar Sesión</h2>
+      <form>
+          <div class="mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" required>
+          </div>
+          <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-login">Ingresar</button>
+      </form>
+  </div>
+</div>

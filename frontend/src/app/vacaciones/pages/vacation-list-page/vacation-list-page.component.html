@@ -1,1 +1,55 @@
-<p>vacation-list-page works!</p>
+<div>
+  <h1>Calendario de Vacaciones</h1>
+</div>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="card">
+        <div class="card-header text-center">
+          <button class="btn btn-outline-secondary me-5" (click)="previousMonth()">&#60;</button>
+          <span class="h4 mx-3">{{ currentMonth | date: 'MMMM yyyy' | uppercase }}</span>
+          <button class="btn btn-outline-secondary ms-5" (click)="nextMonth()">&#62;</button>
+        </div>
+        <div class="card-body">
+          <div class="row text-center">
+            <div class="col">
+              <strong>Sun</strong>
+            </div>
+            <div class="col">
+              <strong>Mon</strong>
+            </div>
+            <div class="col">
+              <strong>Tue</strong>
+            </div>
+            <div class="col">
+              <strong>Wed</strong>
+            </div>
+            <div class="col">
+              <strong>Thu</strong>
+            </div>
+            <div class="col">
+              <strong>Fri</strong>
+            </div>
+            <div class="col">
+              <strong>Sat</strong>
+            </div>
+          </div>
+
+          <div class="row" *ngFor="let week of weeks">
+            <div class="col" *ngFor="let day of week">
+              <button
+                *ngIf="day !== null"
+                class="btn btn-light w-100"
+                [ngClass]="{'bg-primary text-white': isSelected(day), 'bg-warning text-dark fw-bold': isToday(day)}"
+                (click)="selectDay(day)"
+              >
+                {{ day }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

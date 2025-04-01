@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VacationListPageComponent } from './pages/vacation-list-page/vacation-list-page.component';
 import { VacationRegisterPageComponent } from './pages/vacation-register-page/vacation-register-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { MaterialModule } from '../material/material.module';
 import { VacationRoutingModule } from './vacaciones-routing.module';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 
 
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { VacationRoutingModule } from './vacaciones-routing.module';
     CommonModule,
     VacationRoutingModule,
     MaterialModule
-  ]
+  ],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }]
 })
-export class VacacionesModule { }
+export class VacacionesModule {
+
+}

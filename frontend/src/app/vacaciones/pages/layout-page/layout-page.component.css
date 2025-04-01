@@ -1,0 +1,59 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#wrapper {
+  display: flex;
+  height: 100vh; /* Hace que ocupe toda la pantalla */
+}
+
+.sidebar {
+  height: 100vh; /* Que el sidebar ocupe toda la pantalla */
+  width: 250px;
+  background-color: #343a40; /* Color oscuro */
+  color: white;
+  transition: width 0.3s;
+  overflow: hidden;
+  font-size: 1.1rem; /* Aumentar el tamaño del texto del sidebar */
+}
+
+.sidebar.collapsed {
+  width: 80px; /* Sidebar contraído */
+  text-align: center;
+}
+
+.sidebar.collapsed .nav-item {
+  justify-content: center;
+}
+
+.sidebar.collapsed span {
+  display: none; /* Oculta el texto cuando está colapsado */
+}
+
+.sidebar .nav-item i {
+  font-size: 1.5rem; /* Aumentar el tamaño de los iconos */
+}
+
+.sidebar .nav-item span {
+  font-size: 1.1rem; /* Aumentar el tamaño del texto */
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* Ajustar el tamaño de los iconos en el botón del toggle */
+.toggle-btn i {
+  font-size: 1.8rem; /* Tamaño del icono del toggle */
+}
+
+#page-content-wrapper {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f8f9fa; /* Fondo claro */
+  overflow-y: auto; /* Permite desplazamiento */
+}

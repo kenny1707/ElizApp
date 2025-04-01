@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./vacaciones/vacaciones.module').then( m => m.VacacionesModule),
   },
   {
+    path: 'contratos',
+    loadChildren: () => import('./contratos/contratos.module').then( m => m.ContratosModule),
+  },
+  {
     path: '404',
     component: Error404PageComponent,
   },

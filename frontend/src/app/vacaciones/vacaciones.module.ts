@@ -7,6 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { VacationRoutingModule } from './vacaciones-routing.module';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { FormsModule } from '@angular/forms';
 
 
 registerLocaleData(localeEs, 'es');
@@ -20,7 +21,8 @@ registerLocaleData(localeEs, 'es');
   imports: [
     CommonModule,
     VacationRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }]
 })

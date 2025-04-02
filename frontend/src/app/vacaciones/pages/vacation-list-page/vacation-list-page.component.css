@@ -1,38 +1,28 @@
 .card {
-  background-color: #f8f9fa;
-}
-
-.card-header {
-  background-color: #343a40;
-  color: white;
-  font-size: 1.2rem;
+  border-radius: 15px;
 }
 
 .btn {
-  padding: 0.5rem;
-  margin: 0.2rem;
+  transition: all 0.2s ease-in-out;
 }
 
-.btn-light {
-  background-color: #f8f9fa;
+.btn:hover {
+  transform: scale(1.05);
 }
 
-.btn-light:hover {
-  background-color: #e2e6ea;
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
 }
 
 .bg-primary {
-  background-color: #007bff !important;
-}
-
-.text-white {
-  color: white !important;
-}
-
-.w-100 {
-  width: 100%;
-}
-
-button:focus {
-  outline: none;
+  background-color: #0d6efd !important;
 }

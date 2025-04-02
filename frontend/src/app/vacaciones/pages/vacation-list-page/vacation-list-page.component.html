@@ -1,46 +1,79 @@
 <div>
-  <h1>Calendario de Vacaciones</h1>
+  <h1 class="text-center text-primary mt-3 fw-bold">📅 Calendario de Vacaciones</h1>
 </div>
 
 <div class="container mt-4">
+  <h2 class="text-center mb-4">Lista de Vacaciones</h2>
+
+  <!-- Barra de búsqueda -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control shadow-sm border-primary"
+        placeholder="🔍 Buscar por nombre..."
+        [(ngModel)]="searchQuery"
+        (input)="filterEmployees()"
+      />
+    </div>
+  </div>
+
+  <!-- Tabla de empleados -->
+  <div class="table-responsive shadow-sm">
+    <table class="table table-striped table-hover table-bordered text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Nombre Completo</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Fin</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of filteredEmployees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.phone }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm me-2">✏️ Editar</button>
+            <button class="btn btn-danger btn-sm">🗑️ Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- Calendario -->
+<div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
-      <div class="card">
-        <div class="card-header text-center">
-          <button class="btn btn-outline-secondary me-5" (click)="previousMonth()">&#60;</button>
+      <div class="card shadow">
+        <div class="card-header text-center bg-primary text-white">
+          <button class="btn btn-outline-light me-5" (click)="previousMonth()">⬅️</button>
           <span class="h4 mx-3">{{ currentMonth | date: 'MMMM yyyy' | uppercase }}</span>
-          <button class="btn btn-outline-secondary ms-5" (click)="nextMonth()">&#62;</button>
+          <button class="btn btn-outline-light ms-5" (click)="nextMonth()">➡️</button>
         </div>
         <div class="card-body">
-          <div class="row text-center">
-            <div class="col">
-              <strong>Sun</strong>
-            </div>
-            <div class="col">
-              <strong>Mon</strong>
-            </div>
-            <div class="col">
-              <strong>Tue</strong>
-            </div>
-            <div class="col">
-              <strong>Wed</strong>
-            </div>
-            <div class="col">
-              <strong>Thu</strong>
-            </div>
-            <div class="col">
-              <strong>Fri</strong>
-            </div>
-            <div class="col">
-              <strong>Sat</strong>
-            </div>
+          <div class="row text-center fw-bold text-secondary">
+            <div class="col">Dom</div>
+            <div class="col">Lun</div>
+            <div class="col">Mar</div>
+            <div class="col">Mié</div>
+            <div class="col">Jue</div>
+            <div class="col">Vie</div>
+            <div class="col">Sáb</div>
           </div>
 
           <div class="row" *ngFor="let week of weeks">
-            <div class="col" *ngFor="let day of week">
+            <div class="col p-1" *ngFor="let day of week">
               <button
                 *ngIf="day !== null"
-                class="btn btn-light w-100"
+                class="btn w-100 rounded shadow-sm"
                 [ngClass]="{'bg-primary text-white': isSelected(day), 'bg-warning text-dark fw-bold': isToday(day)}"
                 (click)="selectDay(day)"
               >
@@ -51,5 +84,22 @@
         </div>
       </div>
     </div>
+
+    <!-- Panel lateral de información -->
+    <div class="col-md-4 mt-4 mt-md-0" *ngIf="selectedDateInfo">
+      <div class="card shadow">
+        <div class="card-header bg-info text-white">
+          <h5 class="mb-0">📌 Detalles del Día</h5>
+        </div>
+        <div class="card-body">
+          <p class="fw-bold">{{ selectedDateInfo }}</p>
+          <p><strong>Empleado:</strong> Juan Pérez</p>
+          <p><strong>Estado:</strong> ✅ Aprobado</p>
+          <p><strong>Comentarios:</strong> Vacaciones programadas</p>
+          <button class="btn btn-danger w-100" (click)="selectedDateInfo = null">❌ Cerrar</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+

@@ -12,6 +12,18 @@ export class VacationListPageComponent implements OnInit {
   today: Date;
   weeks: (number | null)[][] = []; // Cada semana será una fila con 7 elementos (días)
   selectedDay: number | null = null;
+  selectedDateInfo: string | null = null; // Información del día seleccionado
+  searchQuery: string = '';
+  
+
+  // Lista de empleados con vacaciones
+  employees = [
+    { id: 1, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
+    { id: 2, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
+    { id: 3, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' }
+  ];
+
+  filteredEmployees = [...this.employees];
 
   constructor() {
     this.today = new Date();
@@ -68,10 +80,9 @@ export class VacationListPageComponent implements OnInit {
     this.generateCalendar();
   }
 
-
-  // Seleccionar un día
   selectDay(day: number) {
     this.selectedDay = day;
+    this.selectedDateInfo = `Información de ${day} de ${this.currentMonth.toLocaleString('es-ES', { month: 'long' })}`;
   }
 
   // Verificar si el día está seleccionado
@@ -84,6 +95,12 @@ export class VacationListPageComponent implements OnInit {
       day === this.today.getDate() &&
       this.currentMonth.getMonth() === this.today.getMonth() &&
       this.currentMonth.getFullYear() === this.today.getFullYear()
+    );
+  }
+
+  filterEmployees() {
+    this.filteredEmployees = this.employees.filter(employee =>
+      employee.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
   }
 }

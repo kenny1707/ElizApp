@@ -15,8 +15,15 @@
         (input)="filterEmployees()"
       />
     </div>
+    <div class="col-md-6 text-end">
+      <a class="nav-link text-white" [routerLink]="'/vacaciones/register'">
+        <i class="bi bi-calendar-plus"></i>
+        <button class="btn btn-success shadow-sm">
+          ✈️ Solicitar Vacaciones
+        </button>
+      </a>
+    </div>
   </div>
-
   <!-- Tabla de empleados -->
   <div class="table-responsive shadow-sm">
     <table class="table table-striped table-hover table-bordered text-center">
@@ -35,9 +42,19 @@
           <td>{{ employee.name }}</td>
           <td>{{ employee.email }}</td>
           <td>{{ employee.phone }}</td>
-          <td>
-            <button class="btn btn-primary btn-sm me-2">✏️ Editar</button>
-            <button class="btn btn-danger btn-sm">🗑️ Eliminar</button>
+          <td class="d-flex justify-content-center align-items-center gap-2">
+            <!-- Estado con badge de colores -->
+            <span class="badge"
+                  [ngClass]="{
+                    'bg-warning text-dark': employee.status === 'pendiente',
+                    'bg-success': employee.status === 'aprobado',
+                    'bg-danger': employee.status === 'rechazado'
+                  }">
+              {{ employee.status | titlecase }}
+            </span>
+
+            <button class="btn btn-primary btn-sm">✏️</button>
+            <button class="btn btn-danger btn-sm">🗑️</button>
           </td>
         </tr>
       </tbody>

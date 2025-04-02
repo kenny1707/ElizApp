@@ -8,6 +8,7 @@ import { VacationRoutingModule } from './vacaciones-routing.module';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { FormsModule } from '@angular/forms';
+import { VacationAprobarPageComponent } from './pages/vacation-aprobar-page/vacation-aprobar-page.component';
 
 
 registerLocaleData(localeEs, 'es');
@@ -16,7 +17,8 @@ registerLocaleData(localeEs, 'es');
   declarations: [
     VacationListPageComponent,
     VacationRegisterPageComponent,
-    LayoutPageComponent
+    LayoutPageComponent,
+    VacationAprobarPageComponent
   ],
   imports: [
     CommonModule,

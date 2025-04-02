@@ -18,21 +18,21 @@ export class VacationListPageComponent implements OnInit {
 
   // Lista de empleados con vacaciones
   employees = [
-    { id: 1, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
-    { id: 2, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
-    { id: 3, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' },
-    { id: 4, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
-    { id: 5, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
-    { id: 6, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' },
-    { id: 7, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
-    { id: 8, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
-    { id: 9, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' },
-    { id: 10, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
-    { id: 11, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
-    { id: 12, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' },
-    { id: 13, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
-    { id: 14, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
-    { id: 15, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' }
+    { id: 1, name: 'Juan Pérez', email: '2025-06-10', phone: '2025-06-20', status: 'pendiente' },
+    { id: 2, name: 'María López', email: '2025-07-01', phone: '2025-07-10', status: 'aprobado' },
+    { id: 3, name: 'Carlos Ramírez', email: '2025-08-05', phone: '2025-08-15', status: 'rechazado' },
+    { id: 4, name: 'Ana Torres', email: '2025-09-10', phone: '2025-09-20', status: 'pendiente' },
+    { id: 5, name: 'Ana Torres', email: '2025-09-10', phone: '2025-09-20', status: 'pendiente' },
+    { id: 1, name: 'Juan Pérez', email: '2025-06-10', phone: '2025-06-20', status: 'pendiente' },
+    { id: 2, name: 'María López', email: '2025-07-01', phone: '2025-07-10', status: 'aprobado' },
+    { id: 3, name: 'Carlos Ramírez', email: '2025-08-05', phone: '2025-08-15', status: 'rechazado' },
+    { id: 4, name: 'Ana Torres', email: '2025-09-10', phone: '2025-09-20', status: 'pendiente' },
+    { id: 5, name: 'Ana Torres', email: '2025-09-10', phone: '2025-09-20', status: 'pendiente' },
+    { id: 1, name: 'Juan Pérez', email: '2025-06-10', phone: '2025-06-20', status: 'pendiente' },
+    { id: 2, name: 'María López', email: '2025-07-01', phone: '2025-07-10', status: 'aprobado' },
+    { id: 3, name: 'Carlos Ramírez', email: '2025-08-05', phone: '2025-08-15', status: 'rechazado' },
+    { id: 4, name: 'Ana Torres', email: '2025-09-10', phone: '2025-09-20', status: 'pendiente' },
+    { id: 5, name: 'Ana Torres', email: '2025-09-10', phone: '2025-09-20', status: 'pendiente' },
   ];
 
   filteredEmployees = [...this.employees];
@@ -42,6 +42,7 @@ export class VacationListPageComponent implements OnInit {
   itemsPerPage: number = 10;
   totalPages: number = 1;
   paginatedEmployees: any[] = [];
+  router: any;
 
   constructor() {
     this.today = new Date();
@@ -142,6 +143,13 @@ export class VacationListPageComponent implements OnInit {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.updatePagination();
+    }
+  }
+
+  updateStatus(event: { id: number, status: string }) {
+    const employee = this.employees.find(emp => emp.id === event.id);
+    if (employee) {
+      employee.status = event.status;
     }
   }
 }

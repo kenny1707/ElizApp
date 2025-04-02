@@ -19,25 +19,27 @@
       <li class="nav-item d-flex align-items-center">
         <a class="nav-link d-flex align-items-center text-white" [routerLink]="'/contratos/register'">
           <i class="bi bi-pencil-square"></i>
-          <span *ngIf="!isCollapsed" class="ms-2" href="/auth/login">Registrar Contrato</span>
+          <span *ngIf="!isCollapsed" class="ms-2">Registrar Contrato</span>
         </a>
       </li>
       <h4 *ngIf="!isCollapsed">Vacaciones</h4>
       <li class="nav-item d-flex align-items-center">
         <a class="nav-link d-flex align-items-center text-white" [routerLink]="'/vacaciones/list'">
-          <i class="bi bi-calendar-check"></i>
-          <span *ngIf="!isCollapsed" class="ms-2" href="/vacaciones/list">Lista de Vacaciones</span>
+          <i class="bi bi-card-checklist"></i>
+          <span *ngIf="!isCollapsed" class="ms-2">Lista de Vacaciones</span>
         </a>
       </li>
       <li class="nav-item d-flex align-items-center">
         <a class="nav-link d-flex align-items-center text-white" [routerLink]="'/vacaciones/register'">
           <i class="bi bi-calendar-plus"></i>
-          <span *ngIf="!isCollapsed" class="ms-2" href="/vacaciones/register">Registrar Vacaciones</span>
+          <span *ngIf="!isCollapsed" class="ms-2">Registrar Vacaciones</span>
         </a>
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="bi bi-envelope"></i>
-        <span *ngIf="!isCollapsed" class="ms-2">Contacto</span>
+        <a class="nav-link d-flex align-items-center text-white" [routerLink]="'/vacaciones/aprobar'">
+          <i class="bi bi-calendar-check"></i>
+          <span *ngIf="!isCollapsed" class="ms-2">Aprobar Vacaciones</span>
+        </a>
       </li>
       <li class="nav-item d-flex align-items-center">
         <a class="nav-link d-flex align-items-center text-white fixed-bottom" [routerLink]="'/auth/login'">

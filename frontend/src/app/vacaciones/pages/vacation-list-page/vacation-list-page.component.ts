@@ -14,16 +14,34 @@ export class VacationListPageComponent implements OnInit {
   selectedDay: number | null = null;
   selectedDateInfo: string | null = null; // Información del día seleccionado
   searchQuery: string = '';
-  
+
 
   // Lista de empleados con vacaciones
   employees = [
     { id: 1, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
     { id: 2, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
-    { id: 3, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' }
+    { id: 3, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' },
+    { id: 4, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
+    { id: 5, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
+    { id: 6, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' },
+    { id: 7, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
+    { id: 8, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
+    { id: 9, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' },
+    { id: 10, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
+    { id: 11, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
+    { id: 12, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' },
+    { id: 13, name: 'Juan Pérez', email: 'juanperez@email.com', phone: '+51 999 888 777' },
+    { id: 14, name: 'María López', email: 'marialopez@email.com', phone: '+51 998 777 666' },
+    { id: 15, name: 'Carlos Ramírez', email: 'carlosramirez@email.com', phone: '+51 997 777 555' }
   ];
 
   filteredEmployees = [...this.employees];
+
+  // Paginación
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  totalPages: number = 1;
+  paginatedEmployees: any[] = [];
 
   constructor() {
     this.today = new Date();
@@ -33,6 +51,7 @@ export class VacationListPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.generateCalendar();
+    this.updatePagination();
   }
 
   generateCalendar() {
@@ -102,5 +121,27 @@ export class VacationListPageComponent implements OnInit {
     this.filteredEmployees = this.employees.filter(employee =>
       employee.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
+    this.currentPage = 1; // Reiniciar a la primera página al filtrar
+    this.updatePagination();
+  }
+
+  updatePagination() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    this.paginatedEmployees = this.filteredEmployees.slice(startIndex, startIndex + this.itemsPerPage);
+    this.totalPages = Math.ceil(this.filteredEmployees.length / this.itemsPerPage);
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
   }
 }
